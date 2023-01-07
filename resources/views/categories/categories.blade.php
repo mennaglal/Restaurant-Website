@@ -53,6 +53,12 @@
                     <li class="menu-active"><a href={{('categories') }}>Categories</a></li>
                     <li><a href={{('foods') }}>Foods</a></li>
                     <li><a href={{('chiefs') }}>Chiefs</a></li>
+                    <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
+                        <ul>
+                            <li><a href={{('users') }}>Users</a></li>
+                            <li><a href={{'roles'}}>Role Users</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -154,7 +160,7 @@
     <section id="cart">
         <div class="container">
             <header class="section-header">
-                <h3>Cart</h3>
+                <h3>Categories</h3>
             </header>
             <div class="row">
                 <div class="col-md-12">

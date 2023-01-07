@@ -3,7 +3,7 @@
     <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Dashboard</title>
+        <title>Home</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -54,6 +54,12 @@
                     <li><a href={{('categories') }}>Categories</a></li>
                     <li><a href={{('foods') }}>Foods</a></li>
                     <li><a href={{('chiefs') }}>Chiefs</a></li>
+                    <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
+                        <ul>
+                            <li><a href={{('users') }}>Users</a></li>
+                            <li><a href={{'roles'}}>Role Users</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -104,84 +110,84 @@
     </section>
     <!-- About Section End-->
 
-    <!-- Testimonials Section Start -->
-    <section id="testimonials" class="section-bg wow fadeInUp">
-        <div class="container">
-            <div class="section-header">
-                <h3>Our Food Lovers</h3>
-            </div>
+{{--    <!-- Testimonials Section Start -->--}}
+{{--    <section id="testimonials" class="section-bg wow fadeInUp">--}}
+{{--        <div class="container">--}}
+{{--            <div class="section-header">--}}
+{{--                <h3>Our Food Lovers</h3>--}}
+{{--            </div>--}}
 
-            <div class="owl-carousel testimonials-carousel">
-                <div class="row testimonial-item">
-                    <div class="col-sm-4">
-                        <div class="img">
-                            <img src="{{asset('img/testimonial-1.jpg')}}" class="testimonial-img" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="testimonial-content">
-                            <div class="content">
-                                <h4>Jamie Boyd</h4>
-                                <h5>VIP Client</h5>
-                                <p>
-                                    <i class="fa fa-quote-left"></i>
-                                    Commodo sed hendrerit id, posuere tempus odio. Phasellus vel leo aliquam, interdum massa quis, aliquam sapien. Aliquam erat volutpat. Etiam nec feugiat libero. Phasellus in ipsum nunc.
-                                    <i class="fa fa-quote-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--            <div class="owl-carousel testimonials-carousel">--}}
+{{--                <div class="row testimonial-item">--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="img">--}}
+{{--                            <img src="{{asset('img/testimonial-1.jpg')}}" class="testimonial-img" alt="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-8">--}}
+{{--                        <div class="testimonial-content">--}}
+{{--                            <div class="content">--}}
+{{--                                <h4>Jamie Boyd</h4>--}}
+{{--                                <h5>VIP Client</h5>--}}
+{{--                                <p>--}}
+{{--                                    <i class="fa fa-quote-left"></i>--}}
+{{--                                    Commodo sed hendrerit id, posuere tempus odio. Phasellus vel leo aliquam, interdum massa quis, aliquam sapien. Aliquam erat volutpat. Etiam nec feugiat libero. Phasellus in ipsum nunc.--}}
+{{--                                    <i class="fa fa-quote-right"></i>--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="row testimonial-item">
-                    <div class="col-sm-4">
-                        <div class="img">
-                            <img src="{{asset('img/testimonial-2.jpg')}}" class="testimonial-img" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="testimonial-content">
-                            <div class="content">
-                                <h4>Albert Cerrato</h4>
-                                <h5>Regular Client</h5>
-                                <p>
-                                    <i class="fa fa-quote-left"></i>
-                                    Proin ut dui dictum ligula condimentum cursus. Ut orci arcu, commodo sed hendrerit id, posuere tempus odio. Phasellus vel leo aliquam, interdum massa quis, aliquam sapien. Aliquam erat volutpat
-                                    <i class="fa fa-quote-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="row testimonial-item">--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="img">--}}
+{{--                            <img src="{{asset('img/testimonial-2.jpg')}}" class="testimonial-img" alt="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-8">--}}
+{{--                        <div class="testimonial-content">--}}
+{{--                            <div class="content">--}}
+{{--                                <h4>Albert Cerrato</h4>--}}
+{{--                                <h5>Regular Client</h5>--}}
+{{--                                <p>--}}
+{{--                                    <i class="fa fa-quote-left"></i>--}}
+{{--                                    Proin ut dui dictum ligula condimentum cursus. Ut orci arcu, commodo sed hendrerit id, posuere tempus odio. Phasellus vel leo aliquam, interdum massa quis, aliquam sapien. Aliquam erat volutpat--}}
+{{--                                    <i class="fa fa-quote-right"></i>--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="row testimonial-item">
-                    <div class="col-sm-4">
-                        <div class="img">
-                            <img src="{{asset('img/testimonial-3.jpg')}}" class="testimonial-img" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="testimonial-content">
-                            <div class="content">
-                                <h4>Theresa Wood</h4>
-                                <h5>VIP Client</h5>
-                                <p>
-                                    <i class="fa fa-quote-left"></i>
-                                    Dictum ligula condimentum cursus commodo sed hendrerit id, posuere tempus odio. Phasellus vel leo aliquam, interdum massa quis, aliquam sapien. Aliquam erat volutpat. Etiam nec ultricies semper risus.
-                                    <i class="fa fa-quote-right"></i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonials Section End -->
+{{--                <div class="row testimonial-item">--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="img">--}}
+{{--                            <img src="{{asset('img/testimonial-3.jpg')}}" class="testimonial-img" alt="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-8">--}}
+{{--                        <div class="testimonial-content">--}}
+{{--                            <div class="content">--}}
+{{--                                <h4>Theresa Wood</h4>--}}
+{{--                                <h5>VIP Client</h5>--}}
+{{--                                <p>--}}
+{{--                                    <i class="fa fa-quote-left"></i>--}}
+{{--                                    Dictum ligula condimentum cursus commodo sed hendrerit id, posuere tempus odio. Phasellus vel leo aliquam, interdum massa quis, aliquam sapien. Aliquam erat volutpat. Etiam nec ultricies semper risus.--}}
+{{--                                    <i class="fa fa-quote-right"></i>--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <!-- Testimonials Section End -->--}}
 
 
     <!-- Footer Start -->
-    @extends('footer');
+    @extends('footer')
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
@@ -198,7 +204,7 @@
     <script src="{{asset('vendor/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
     <!-- Main Javascript File -->
-{{--    <script src="{{asset('js/main.js')}}"></script>--}}
+    <script src="{{asset('js/main.js')}}"></script>
 
     </body>
     </html>

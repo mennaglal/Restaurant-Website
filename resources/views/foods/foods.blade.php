@@ -51,6 +51,12 @@
                     <li><a href={{('categories') }}>Categories</a></li>
                     <li class="menu-active"><a href={{('foods') }}>Foods</a></li>
                     <li><a href={{('chiefs') }}>Chiefs</a></li>
+                    <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
+                        <ul>
+                            <li><a href={{('users') }}>Users</a></li>
+                            <li><a href={{'roles'}}>Role Users</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -275,7 +281,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <!-- delete -->
                 <div class="modal" tabindex="-1" role="dialog" id="deletefood">
