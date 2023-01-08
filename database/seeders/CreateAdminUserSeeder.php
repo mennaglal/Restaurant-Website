@@ -20,7 +20,7 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'mennagalal0193@gmail.com',
             'password' => bcrypt('menna1511'),
             'roles_name' => ["owner"],
-            'Status' => 'enable',
+            'status' => 'enable',
         ]);
         $role = Role::create(['name' => 'owner']);
         $permissions = Permission::pluck('id','id')->all();

@@ -7,6 +7,9 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ChiefsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ReservationsController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ContactsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +31,9 @@ Route::get('/dashboard', function () {
 Route::resource('foods',FoodsController::class);
 Route::resource('categories',CategoriesController::class);
 Route::resource('chiefs',ChiefsController::class);
+Route::resource('reservations',ReservationsController::class);
+Route::resource('orders',OrdersController::class);
+Route::resource('contacts',ContactsController::class);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

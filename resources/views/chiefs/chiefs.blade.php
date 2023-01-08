@@ -43,26 +43,44 @@
     <!-- Top Header End -->
 
     <!-- Header Start -->
-    <header id="header">
-        <div class="container">
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li ><a href={{('dashboard')}}>Home</a></li>
-                    <li ><a href={{('categories') }}>Categories</a></li>
-                    <li><a href={{('foods') }}>Foods</a></li>
-                    <li class="menu-active"><a href={{('chiefs') }}>Chiefs</a></li>
-                    <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
-                        <ul>
-                            <li><a href={{('users') }}>Users</a></li>
-                            <li><a href={{'roles'}}>Role Users</a></li>
-                        </ul>
-                    </li>
+    @can('home navbar')
+        <header id="header">
+            <div class="container">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        @can('home')
+                            <li ><a href={{('dashboard')}}>Home</a></li>
+                        @endcan
+                        @can('categories')
+                            <li><a href={{('categories') }}>Categories</a></li>
+                        @endcan
+                        @can('foods')
+                            <li><a href={{('foods') }}>Foods</a></li>
+                        @endcan
+                        @can('chiefs')
+                            <li class="menu-active"><a href={{('chiefs') }}>Chiefs</a></li>
+                        @endcan
+                        @can('online order page')
+                            <li><a href={{('orders') }}>Order</a></li>
+                        @endcan
+                        @can('contact page')
+                            <li><a href={{('contacts') }}>Contact Us</a></li>
+                        @endcan
+                        @can('users')
+                            <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
+                                <ul>
+                                    <li><a href={{('users') }}>Users</a></li>
+                                    <li><a href={{'roles'}}>Role Users</a></li>
+                                </ul>
+                            </li>
+                        @endcan
 
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <!-- Header End -->
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    @endcan
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -104,8 +122,9 @@
             <header class="section-header">
                 <h3>Chief Menu</h3>
             </header>
+            @can('add chief')
             <a href="#newchief" data-toggle="modal"><button class="btn btn-block btn-addcategory">+Add Chief</button></a>
-
+            @endcan
             <br>
 
             <div class="modal" tabindex="-1" role="dialog" id="newchief">
@@ -168,7 +187,7 @@
     </section>
     <!-- Menu Section End-->
     <!-- Cart Section Start -->
-
+    @can('show chief')
     <section id="cart">
         <div class="container">
             <header class="section-header">
@@ -186,7 +205,9 @@
                                 <th scope="col">Facebook Link</th>
                                 <th scope="col">Twitter Link</th>
                                 <th scope="col">Instagram Link</th>
+                                @can('update chief')
                                 <th scope="col">Delete/Edit</th>
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -200,7 +221,9 @@
                                     <td>{{ $x->facebook_link }}</td>
                                     <td>{{ $x->twitter_link }}</td>
                                     <td>{{ $x->instagram_link }}</td>
+                                    @can('update chief')
                                     <td>
+                                        @can('update chief')
                                         <a data-id="{{ $x->id }}"
                                            data-name="{{ $x->name }}"
 {{--                                           data-image="{{ $x->image }}"--}}
@@ -209,11 +232,14 @@
                                            data-instagram_link="{{ $x->instagram_link }}"
                                            data-toggle="modal"
                                            href="#editchief" title="Edit"><i class="fa fa-edit"></i></a>
+                                        @endcan
+                                        @can('delete chief')
                                         <a data-id="{{ $x->id }}"
                                            data-name="{{ $x->name }}"
                                            data-toggle="modal" href="#deletechief" title="Delete"><i class="fa fa-trash"></i></a>
+                                         @endcan
                                     </td>
-
+                                    @endcan
                                 </tr>
                             @endforeach
 
@@ -301,6 +327,7 @@
             </div>
         </div>
     </section>
+    @endcan
     <!-- Cart Section End -->
 
     <!-- JavaScript Libraries -->

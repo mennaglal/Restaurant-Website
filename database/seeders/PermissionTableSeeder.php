@@ -48,14 +48,9 @@ class PermissionTableSeeder extends Seeder
             'show',
             'show users',
             'roles index',
-            'roles create',
-            'roles show permission',
+            'roles create',  //create or store
+            'roles show permission', //delete permission
             'roles edit',
-            'reservations',
-            'reservations date',
-            'reservations time',
-            'reservations party size',
-            'reservations book btn',
             'delicious food menu',
             'show food menu',
             'order now food menu',

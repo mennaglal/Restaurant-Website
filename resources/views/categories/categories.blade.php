@@ -45,25 +45,44 @@
     <!-- Top Header End -->
 
     <!-- Header Start -->
-    <header id="header">
-        <div class="container">
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li ><a href={{('dashboard')}}>Home</a></li>
-                    <li class="menu-active"><a href={{('categories') }}>Categories</a></li>
-                    <li><a href={{('foods') }}>Foods</a></li>
-                    <li><a href={{('chiefs') }}>Chiefs</a></li>
-                    <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
-                        <ul>
-                            <li><a href={{('users') }}>Users</a></li>
-                            <li><a href={{'roles'}}>Role Users</a></li>
-                        </ul>
-                    </li>
+    @can('home navbar')
+        <header id="header">
+            <div class="container">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        @can('home')
+                            <li><a href={{('dashboard')}}>Home</a></li>
+                        @endcan
+                        @can('categories')
+                            <li class="menu-active"><a href={{('categories') }}>Categories</a></li>
+                        @endcan
+                        @can('foods')
+                            <li><a href={{('foods') }}>Foods</a></li>
+                        @endcan
+                        @can('chiefs')
+                            <li><a href={{('chiefs') }}>Chiefs</a></li>
+                        @endcan
+                        @can('online order page')
+                            <li><a href={{('orders') }}>Order</a></li>
+                        @endcan
+                        @can('contact page')
+                            <li><a href={{('contacts') }}>Contact Us</a></li>
+                        @endcan
+                        @can('users')
+                            <li class="menu-has-children"><a href={{('users') }}>Users Menu</a>
+                                <ul>
+                                    <li><a href={{('users') }}>Users</a></li>
+                                    <li><a href={{'roles'}}>Role Users</a></li>
+                                </ul>
+                            </li>
+                        @endcan
 
-                </ul>
-            </nav>
-        </div>
-    </header>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    @endcan
+
     <!-- Header End -->
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -106,7 +125,9 @@
             <header class="section-header">
                 <h3>Category Menu</h3>
             </header>
+            @can('add category')
             <a href="#newcategory" data-toggle="modal"><button class="btn btn-block btn-addcategory">+Add Category</button></a>
+            @endcan
             <br>
 
             <div class="modal" tabindex="-1" role="dialog" id="newcategory">
@@ -156,7 +177,7 @@
     </section>
     <!-- Menu Section End-->
     <!-- Cart Section Start -->
-
+    @can('show category')
     <section id="cart">
         <div class="container">
             <header class="section-header">
@@ -172,7 +193,9 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Image</th>
+                                @can('update category')
                                 <th scope="col">Delete/Edit</th>
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -183,22 +206,26 @@
                                     <td>{{ $x->name }}</td>
                                     <td>{{ $x->description }}</td>
                                     <td><img src="img/{{$x->image}}"></td>
-
+                                    @can('update category')
                                     <td>
-                                        <button>
+                                        @can('update category')
                                         <a data-id="{{ $x->id }}"
                                            data-name="{{ $x->name }}"
                                            data-description="{{ $x->description }}"
 {{--                                           data-image="{{ $x->image }}"--}}
                                            data-toggle="modal"
                                            href="#editcategory"
-                                           title="Edit"><i class="fa fa-edit"></i></a></button>
+                                           title="Edit"><i class="fa fa-edit"></i></a>
+                                        @endcan
+                                        @can('delete category')
                                         <a data-id="{{ $x->id }}"
                                            data-name="{{ $x->name }}"
                                            data-toggle="modal"
                                            href="#deletecategory"
                                            title="Delete"><i class="fa fa-trash"></i></a>
+                                        @endcan
                                     </td>
+                                    @endcan
 
                                 </tr>
                             @endforeach
@@ -274,6 +301,7 @@
             </div>
         </div>
     </section>
+    @endcan
     <!-- Cart Section End -->
     <!-- Footer Start -->
     @extends('footer');

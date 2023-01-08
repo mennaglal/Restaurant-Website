@@ -1,4 +1,5 @@
 <!-- Footer Start -->
+@can('footer')
 <footer id="footer">
     <div class="container">
         <div class="row">
@@ -21,6 +22,7 @@
         </div>
     </div>
 </footer>
+@endcan
 <!-- Footer end -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

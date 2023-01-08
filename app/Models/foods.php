@@ -21,4 +21,8 @@ class foods extends Model
     {
         return $this->belongsTo('App\Models\categories','category_id','id');
     }
+    public function order()
+    {
+        return $this->belongsToMany(orders::class);
+    }
 }
