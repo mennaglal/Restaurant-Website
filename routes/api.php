@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 Route::get('/foods',[FoodsController::class,'index']);
+Route::get('/food/{id}',[FoodsController::class,'show']);

@@ -116,6 +116,7 @@
             </button>
         </div>
     @endif
+
     <!-- Menu Section Start -->
     <section id="food-menu">
         <div class="container">
@@ -126,7 +127,7 @@
             <a href="#newfood" data-toggle="modal"><button class="btn btn-block btn-addcategory">+Add Food</button></a>
             @endcan
             <br>
-
+            <!---add new food -->
             <div class="modal" tabindex="-1" role="dialog" id="newfood">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -184,10 +185,91 @@
                             <img class="img-fluid" src="img/{{$x->image}}" />
                             <div>{{ $x->price }}</div>
                             <h4>{{ $x->name }}</h4>
+{{--                            <a href="#">Add To Cart</a >--}}
                         </div>
                     </div>
                 @endforeach
 
+            </div>
+            <a class="btn btn-block btn-addcategory" data-toggle="modal"  href="#create_order">Create Order</a >
+            <!-- create order -->
+            <div class="modal" tabindex="-1" role="dialog" id="create_order">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Create New Order</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="post">
+                            {{csrf_field()}}
+                            <?php
+                                $emptyArray = [[]];
+                                ?>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">food Name</label>
+                                <select name="id" id="id" class="form-control" required>
+                                    <option value="" selected disabled> --Select Food--</option>
+                                    @foreach ($foods as $food)
+                                        <option value="{{ $food->id }}">{{ $food->name }}</option>
+                                    @endforeach
+                                </select>
+                                <input id="selectedid" name="selectedid" type="hidden">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Quantity</label>
+                                <input type="text" class="form-control" id="quantity"name="quantity" placeholder="Enter Food Quantity">
+                            </div>
+                            <p> The value of the option selected is:
+                                <?php
+                                    array_push($emptyArray, array('laravel', 'codeigniter'));
+                                    //print_r($emptyArray) ;
+                                    ?>
+
+                                <span class="output"></span>
+                            </p>
+
+
+                            <button onclick="getOption()" type="submit"> Check option </button>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-block btn-addcategory">Order Now</button>
+                                <button type="button" class="btn btn-block btn-cancel_category" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                        <?php
+                            // Submit user input data for 2D array
+//                            if (isset($_POST['submit'])) {
+//
+//                                // POST submitted data
+//                                $dimention1 = $_POST["selectedid"];
+//
+//                                // POST submitted data
+//                                $dimention2 = $_POST["quantity"];
+//
+//                                echo "Entered 2d nxn: " . $dimention1
+//                                    . "x" . $dimention2 . " <br>";
+//                                $d = [];
+//                                $k = 0;
+//
+//                                for($row = 0; $row < $dimention1; $row++) {
+//                                    for ($col = 0; $col < $dimention2; $col++) {
+//                                        $d[$row][$col]= $k++;
+//                                    }
+//                                }
+//
+//                                for ($row = 0; $row < $dimention1; $row++) {
+//                                    for ($col = 0; $col < $dimention2; $col++) {
+//                                        echo $d[$row][$col]." ";
+//                                    }
+//                                    echo "<br>";
+//                                }
+//                            }
+                            ?>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -258,7 +340,7 @@
                         </table>
                     </div>
                 </div>
-                <!-- edit -->
+                <!-- edit food-->
                 <div class="modal" tabindex="-1" role="dialog" id="editfood">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -307,7 +389,7 @@
                     </div>
                 </div>
 
-                <!-- delete -->
+                <!-- delete food-->
                 <div class="modal" tabindex="-1" role="dialog" id="deletefood">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -358,6 +440,19 @@
     <script src="{{asset('vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
     {{--    <!-- Main Javascript File -->--}}
     {{--    <script src="{{asset('js/main.js')}}"></script>--}}
+    <script type="text/javascript">
+        function getOption() {
+            selectElement = document.querySelector('#id');
+            output = selectElement.value;
+            document.querySelector('#selectedid').value = output;
+
+            var key_value = {};
+            $('#selectedid').each(function(){
+                key_value[$(this).attr('name')]= $(this).val();
+            })
+            alert(JSON.stringify(key_value));
+        }
+    </script>
     <script>
         $('#editfood').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)

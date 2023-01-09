@@ -130,7 +130,7 @@
                             <img class="img-fluid" src="img/{{$x->image}}" />
                             <div>{{ $x->price }}</div>
                             <h4>{{ $x->name }}</h4>
-                            <a href="order.html">Order Now</a>
+                            <a href="order.html">Order Now</a >
                         </div>
                     </div>
                 @endforeach

@@ -31,7 +31,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-            'status' => 'required_if:status,disable'
+            'status' => 'required_if:status,enable'
         ];
     }
 
@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
     public function authenticate()
     {
         $this->ensureIsNotRateLimited();
-
+        Auth::attempt(['email'=>$this->email,'password'=>$this->password,'status'=>'enable']);
         if (! Auth::attempt($this->only('email', 'password','status'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 

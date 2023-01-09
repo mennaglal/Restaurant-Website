@@ -5,10 +5,9 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="copyright">
-                    <p>&copy; Copyright <a href="">Your Site Name</a>. All Rights Reserved</p>
+                    <p>&copy; Copyright <a href="{{ url('/dashboard') }}">Italian Cuisine</a>. All Rights Reserved</p>
 
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    <p>Designed By <a href="https://www.facebook.com/profile.php?id=100004981808674">Menna Galal</a></p>
                 </div>
             </div>
             <div class="col-sm-6">
