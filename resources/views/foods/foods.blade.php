@@ -279,7 +279,7 @@
     <section id="cart">
         <div class="container">
             <header class="section-header">
-                <h3>Cart</h3>
+                <h3>Foods List</h3>
             </header>
             <div class="row">
                 <div class="col-md-12">
@@ -438,8 +438,8 @@
     <script src="{{asset('vendor/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-    {{--    <!-- Main Javascript File -->--}}
-    {{--    <script src="{{asset('js/main.js')}}"></script>--}}
+        <!-- Main Javascript File -->
+        <script src="{{asset('js/main.js')}}"></script>
     <script type="text/javascript">
         function getOption() {
             selectElement = document.querySelector('#id');

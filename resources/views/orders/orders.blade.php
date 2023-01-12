@@ -276,8 +276,8 @@
     <script src="{{asset('vendor/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-    {{--    <!-- Main Javascript File -->--}}
-    {{--    <script src="{{asset('js/main.js')}}"></script>--}}
+        <!-- Main Javascript File -->
+        <script src="{{asset('js/main.js')}}"></script>
 
 
 

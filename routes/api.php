@@ -20,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('/foods',[FoodsController::class,'index']);
 Route::get('/food/{id}',[FoodsController::class,'show']);
+Route::post('/foods',[FoodsController::class,'store']);
+Route::post('/food/{id}',[FoodsController::class,'update']);

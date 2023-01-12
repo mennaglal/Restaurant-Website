@@ -66,7 +66,7 @@
                     @can('online order page')
                     <li><a href={{('orders') }}>Order</a></li>
                     @endcan
-                    @can('contact us')
+                    @can('contact page')
                     <li><a href={{('contacts') }}>Contact Us</a></li>
                     @endcan
                     @can('users')

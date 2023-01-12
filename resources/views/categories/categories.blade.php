@@ -269,8 +269,6 @@
                         </div>
                     </div>
                 </div>
-
-
                                 <!-- delete -->
                 <div class="modal" tabindex="-1" role="dialog" id="deletecategory">
                     <div class="modal-dialog" role="document">
@@ -320,7 +318,7 @@
     <script src="{{asset('vendor/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
     <!-- Main Javascript File -->
-{{--    <script src="{{asset('js/main.js')}}"></script>--}}
+    <script src="{{asset('js/main.js')}}"></script>
 
     <script>
         $('#editcategory').on('show.bs.modal', function(event){

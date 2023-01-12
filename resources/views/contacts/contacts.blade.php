@@ -107,15 +107,86 @@
             </button>
         </div>
     @endif
+    <!-- Cart Section Start -->
+    @can('contact us')
+        <section id="cart">
+            <div class="container">
+                <header class="section-header">
+                    <h3>Contacts List</h3>
+                </header>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive-sm">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Contact Name</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Message</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 0; ?>
+                                @foreach ($contacts as $x)
+                                        <?php $i++; ?>
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $x->name }}</td>
+                                        <td>{{ $x->email }}</td>
+                                        <td>{{ $x->subject }}</td>
+                                        <td>{{ $x->message }}</td>
+                                        <td>
+                                            <a data-id="{{ $x->id }}"
+                                               data-name="{{ $x->name }}"
+                                               data-message="{{ $x->message }}"
+                                               data-toggle="modal"
+                                               href="#deletecontact"
+                                               title="Delete"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- delete -->
+                        <div class="modal" tabindex="-1" role="dialog" id="deletecontact">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Delete Message</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="{{route('contacts.destroy',$contacts[0]->id)}}"method="post" >
+                                        {{ method_field('delete') }}
+                                        {{csrf_field()}}
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" id="id" value="">
+                                            <label for="exampleFormControlInput1">Contact Name</label>
+                                            <input type="text" class="form-control" id="name"name="name" placeholder="Contact Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="5" placeholder="Message" id="message" name="message"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-block btn-addcategory">Confirm Delete</button>
+                                            <button type="button" class="btn btn-block btn-cancel_category" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </form>
 
-    @if (session()->has('edit'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ session()->get('edit') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endcan
+    <!-- Cart Section End -->
 
     <!-- Contact Section Start -->
     <section id="contact">
@@ -150,32 +221,25 @@
                 </div>
                 @endcan
             </div>
-             @can('contact us')
             <div class="row">
-                <div class="col-md-6">
-                    @can('map')
-                    <div class="contact-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d12623.52751148822!2d-122.47260557388145!3d37.72245039905841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s220%2C+San+Francisco%2C+California%2C+USA!5e0!3m2!1sen!2sbd!4v1555690883913!5m2!1sen!2sbd" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    </div>
-                    @endcan
-                </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="contact-form">
-                        <form>
+                        <form action="{{route('contacts.store')}}"method="post">
+                            {{csrf_field()}}
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Your Name" required="required" />
+                                    <input type="text" class="form-control" placeholder="Your Name" required="required" id="name" name="name"/>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="email" class="form-control" placeholder="Your Email" required="required" />
+                                    <input type="email" class="form-control" placeholder="Your Email" required="required" id="email" name="email"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject" required="required" />
+                                <input type="text" class="form-control" placeholder="Subject" required="required"id="subject" name="subject" />
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" placeholder="Message" required="required" ></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Message" required="required" id="message" name="message"></textarea>
                             </div>
                             @can('contact send message btn')
                             <div><button type="submit">Send Message</button></div>
@@ -184,7 +248,6 @@
                     </div>
                 </div>
             </div>
-            @endcan
         </div>
     </section>
     <!-- Contact Section End -->
@@ -203,15 +266,25 @@
     <script src="{{asset('vendor/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-    {{--    <!-- Main Javascript File -->--}}
-    {{--    <script src="{{asset('js/main.js')}}"></script>--}}
-
+        <!-- Main Javascript File -->
+        <script src="{{asset('js/main.js')}}"></script>
     <!-- Footer Start -->
-    @extends('footer');
+    @extends('footer')
     <!-- Footer End -->
+    <script>
+        $('#deletecontact').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var name = button.data('name')
+            var message = button.data('message')
+            var modal = $(this)
+            modal.find('.modal-content .form-group #id').val(id);
+            modal.find('.modal-content .form-group #name').val(name);
+            modal.find('.modal-content .form-group #message').val(message);
+        });
+    </script>
 
-    <!-- JavaScript Libraries -->
-    @extends('footer_scripts');
+
 
     </body>
     </html>

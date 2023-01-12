@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class FoodResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource into an array. ->>> specify columns what mobile developer need it
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
@@ -17,7 +17,9 @@ class FoodResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
-            'description'=>$this->description,
+            'price'=>$this->price,
+            'quantity'=>$this->quantity,
+            'image'=>$this->image,
         ];
     }
 }
